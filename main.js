@@ -57,7 +57,7 @@ const btn = document.getElementById('musicToggle');
 const icon = document.getElementById('musicIcon');
 const discContainer = document.querySelector('.music-floating');
 
-let playing = true;
+let playing = false;
 
 function updateIcon(){
   if(playing){
@@ -68,19 +68,6 @@ function updateIcon(){
     discContainer.classList.remove('playing');
   }
 }
-// 🎵 Tự động bật nhạc khi load trang
-window.addEventListener('DOMContentLoaded', ()=>{
-  if(audio){
-    audio.play().then(()=>{
-      playing = true;
-      updateIcon();
-    }).catch(()=>{ 
-      // autoplay bị chặn, không sao, chờ người dùng click
-      playing = false; 
-      updateIcon();
-    });
-  }
-});
 if(btn){
   btn.addEventListener('click', ()=>{
     if(!audio) return;
@@ -109,3 +96,5 @@ if(audio){
 
 // Cuộn mượt
 try{ document.documentElement.style.scrollBehavior = 'smooth'; }catch(e){}
+
+
